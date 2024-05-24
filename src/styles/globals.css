@@ -2,32 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Righteous&display=swap");
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "Inter", sans-serif !important;
+}
+.righteous-regular {
+  font-family: "Righteous", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.menus {
+  @apply inline-block min-h-full text-sm hover:after:block hover:after:content-[''] after:absolute after:h-[4px] hover:after:bg-primary-800 hover:after:w-full hover:after:left-0 hover:after:bottom-0 hover:text-divider-500;
+}
+.shadow-box {
+  box-shadow: 0px 4px 10px 0px rgba(181, 181, 181, 0.1);
+}
+.box-menu-shadow {
+  @apply shadow-box;
 }
