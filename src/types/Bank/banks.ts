@@ -1,5 +1,5 @@
 export interface Banks {
-  id: number || null;
+  id: number;
   name: string;
   logo: string;
 }
