@@ -1,13 +1,19 @@
 import { HeadPage } from "@/components/atoms/HeadPage";
 import { Banner } from "@/components/organisms/Home/Banner/Banner";
-import { Navbar } from "@/components/organisms/Navbar/Navbar";
-
+import { NewProducts } from "@/components/organisms/Home/NewProducts/NewProducts";
+import { PopularCategories } from "@/components/organisms/Home/PopularCategories/PopularCategories";
+import { Value } from "@/components/organisms/Home/Value/Value";
+import { LayoutTemplates as Layout } from "@/components/templates/Layouts/LayoutTemplates";
 export default function Home() {
   return (
-    <div>
+    <>
       <HeadPage title="Home" />
-      <Navbar />
-      <Banner />
-    </div>
+      <Layout>
+        <Banner />
+        <PopularCategories />
+        <NewProducts />
+        <Value />
+      </Layout>
+    </>
   );
 }

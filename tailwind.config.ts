@@ -12,6 +12,9 @@ const config: Config = {
         inter: ["Inter", "sans-serif"],
         righteous: ["Righteous", "sans-serif"],
       },
+      fontSize: {
+        "32": "2rem",
+      },
       padding: {
         "25": "6.25rem",
       },
@@ -29,6 +32,13 @@ const config: Config = {
         "primary-900": "#344D20",
         "divider-400": "#E4E4E4",
         "divider-500": "#979797",
+      },
+      width: {
+        "65": "18.375rem",
+        "83": "5.188rem",
+      },
+      borderRadius: {
+        "10": "0.625rem",
       },
     },
   },

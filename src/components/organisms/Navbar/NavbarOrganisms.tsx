@@ -1,13 +1,11 @@
+import { MainLogo } from "@/components/atoms/Logo/MainLogo";
 import React from "react";
 
 export const Navbar = () => {
   return (
-    <header className="container mx-auto px-25 shadow-box">
+    <header className="container mx-auto px-25 shadow-box sticky top-0 bg-white">
       <div className="flex justify-between items-center">
-        <div className="max-w-[115px]">
-          <img src="/logo.png" alt="" className="w-full h-full" />
-        </div>
-
+        <MainLogo />
         <div>
           <ul className="flex items-center flex-row gap-8 min-h-full">
             <li className="min-h-full relative py-5">
