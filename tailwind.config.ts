@@ -8,6 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        progressBar: {
+          "0%": { transform: "translateX(-100%)" },
+          "50%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        progressBar: "progressBar 3s linear infinite",
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         righteous: ["Righteous", "sans-serif"],
@@ -30,6 +40,7 @@ const config: Config = {
         "primary-700": "#446A21",
         "primary-800": "#38551F",
         "primary-900": "#344D20",
+        "divider-300": "#E9E9E9",
         "divider-400": "#E4E4E4",
         "divider-500": "#979797",
       },
@@ -42,6 +53,9 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  daisyui: {
+    themes: ["light"],
+  },
+  plugins: [require("daisyui")],
 };
 export default config;

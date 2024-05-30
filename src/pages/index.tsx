@@ -7,8 +7,7 @@ import { LayoutTemplates as Layout } from "@/components/templates/Layouts/Layout
 export default function Home() {
   return (
     <>
-      <HeadPage title="Home" />
-      <Layout>
+      <Layout title="Home">
         <Banner />
         <PopularCategories />
         <NewProducts />

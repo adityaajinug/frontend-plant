@@ -28,3 +28,12 @@ body {
 .shadow-popular-box {
   @apply shadow-popular;
 }
+.check-icon {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 4.60784L4.49165 8.25248C4.88309 8.66107 5.53529 8.66377 5.9301 8.25843L13 1' stroke='white'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center center;
+  backgorund-size: contain;
+}
+.categories-checkbox {
+  @apply appearance-none rounded h-5 w-5 cursor-pointer border border-solid bg-primary-0 border-primary-800 focus:ring-primary-800 outline-none focus:ring-0 checked:bg-primary-800 checked:border-primary-800 check-icon text-primary-800 check-icon;
+}

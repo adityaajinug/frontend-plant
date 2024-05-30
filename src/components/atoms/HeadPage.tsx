@@ -7,7 +7,7 @@ export const HeadPage: React.FC<HeadPageProps> = ({ title }) => {
   return (
     <div>
       <Head>
-        <title>{title}</title>
+        <title>{title} - Planting Commerce</title>
       </Head>
     </div>
   );
