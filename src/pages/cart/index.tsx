@@ -6,17 +6,7 @@ const Carts = () => {
     <>
       <Layout title="Cart">
         <div className="container mx-auto px-25 mt-[65px]">
-          <div className="flex flex-row gap-[82px]">
-            <div className="flex gap-8">
-              <div className="flex flex-col gap-[18px]">
-                <div>
-                  <img src="/images/img-card.png" alt="" srcset="" />
-                </div>
-              </div>
-              <div></div>
-            </div>
-            <div></div>
-          </div>
+          <div>Cart Page</div>
         </div>
       </Layout>
     </>
