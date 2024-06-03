@@ -11,6 +11,16 @@ const Products = () => {
         <div className="container mx-auto px-25 mt-[68px]">
           <div className="grid grid-cols-12 gap-[89px]">
             <div className="col-span-3">
+              <div className="mb-8 flex justify-between items-center">
+                <h3 className="font-semibold text-base">Filter Result is 6</h3>
+                <button
+                  type="button"
+                  className="flex gap-2 bg-primary-800 px-3 py-[6px] text-primary-0 rounded-xl hover:bg-primary-700 button-hover-effect border-none outline-none"
+                >
+                  <span className="text-base font-semibold">Clear</span>
+                  <img src="/icon/close-circle.svg" alt="close-circle" />
+                </button>
+              </div>
               <div className="flex flex-col gap-6 px-4 py-[18px] bg-primary-50 rounded-lg">
                 <div className="flex flex-col gap-6">
                   <h3 className="text-black font-semibold text-base">

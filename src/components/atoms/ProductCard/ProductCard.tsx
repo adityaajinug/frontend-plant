@@ -1,4 +1,5 @@
 import { Products } from "@/types/Products/products";
+import Link from "next/link";
 import React from "react";
 interface ProductCardProps {
   product: Products;
@@ -17,9 +18,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         <div className="flex justify-between w-full items-center mt-[6px]">
           <div className="flex flex-col gap-[6px]">
-            <h4 className="font-semibold text-base text-black">
+            <Link
+              href={`/products/${product.id}`}
+              className="font-semibold text-base text-black hover:text-primary-700"
+            >
               {product.name}
-            </h4>
+            </Link>
             <div className="flex gap-1 w-full items-center">
               <s className="font-bold text-primary-900 text-sm">
                 {product.price}

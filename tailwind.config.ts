@@ -51,6 +51,9 @@ const config: Config = {
       borderRadius: {
         "10": "0.625rem",
       },
+      margin: {
+        "65": "4.063rem",
+      },
     },
   },
   daisyui: {

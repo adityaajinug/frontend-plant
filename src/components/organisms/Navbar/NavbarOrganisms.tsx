@@ -57,9 +57,9 @@ export const Navbar = () => {
           <div>
             <img src="/icon/user.svg" alt="" />
           </div>
-          <div>
+          <Link href="/cart">
             <img src="/icon/shopping-cart.svg" alt="" />
-          </div>
+          </Link>
         </div>
       </div>
     </header>
