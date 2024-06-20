@@ -1,10 +1,10 @@
 interface Category {
-  id?: number;
-  name: string;
+  id?: string;
+  category_name: string;
 }
 interface Size {
-  id?: number;
-  name: string;
+  id?: string;
+  size: string;
 }
 
 export interface Filter {

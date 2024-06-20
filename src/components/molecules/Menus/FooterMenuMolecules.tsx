@@ -27,7 +27,7 @@ export const FooterMenuMolecules: React.FC = () => {
   return (
     <ul className="flex gap-8">
       {menuDatas.map((menu, index) => (
-        <FooterMenuAtoms nav={{ name: menu.name, url: menu.url }} />
+        <FooterMenuAtoms key={index} nav={{ name: menu.name, url: menu.url }} />
       ))}
     </ul>
   );

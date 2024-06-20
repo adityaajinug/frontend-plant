@@ -1,58 +1,28 @@
 import { ProductCard } from "@/components/atoms/ProductCard/ProductCard";
 import { SectionTitle } from "@/components/atoms/SectionTitle/SectionTitle";
-import React from "react";
+import { Products } from "@/types/Products/products";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const products = [
-  {
-    id: 1,
-    name: "Sansiviera",
-    price: "Rp. 15.000",
-    price_discount: "Rp. 5.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-  {
-    id: 2,
-    name: "Cactus",
-    price: "Rp. 25.000",
-    price_discount: "Rp. 10.000",
-  },
-];
 export const NewProducts = () => {
+  const [products, setProducts] = useState<Products[]>([]);
+  const fetchNewestProducts = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_ENV_LOCAL_VARIABLE}/home/newest-product`
+      );
+      if (response.status === 200) {
+        setProducts(response.data.data);
+      } else {
+        console.error("Error fetching products");
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+  useEffect(() => {
+    fetchNewestProducts();
+  }, []);
   return (
     <>
       <section className="container mx-auto px-25 mt-[106px]">

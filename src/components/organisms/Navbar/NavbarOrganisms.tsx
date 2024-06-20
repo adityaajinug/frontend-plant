@@ -1,9 +1,11 @@
 import { MainLogo } from "@/components/atoms/Logo/MainLogo";
+import { useAuth } from "@/utils/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 
 export const Navbar = () => {
+  const { isAuthenticated, user } = useAuth();
   const router = useRouter();
 
   const getActiveClass = (path: string) => {
@@ -12,7 +14,7 @@ export const Navbar = () => {
       : "";
   };
   return (
-    <header className="container mx-auto px-25 shadow-box sticky top-0 bg-white">
+    <header className="container mx-auto px-25 shadow-box sticky top-0 bg-white z-20">
       <div className="flex justify-between items-center">
         <MainLogo />
         <div>
@@ -54,12 +56,19 @@ export const Navbar = () => {
           </ul>
         </div>
         <div className="flex gap-8">
-          <div>
-            <img src="/icon/user.svg" alt="" />
-          </div>
           <Link href="/cart">
             <img src="/icon/shopping-cart.svg" alt="" />
           </Link>
+          {isAuthenticated ? (
+            <Link href="/profile" className="flex items-center gap-[6px]">
+              <img src="/icon/user.svg" alt="" />
+              <span className="text-black font-normal text-sm">{user}</span>
+            </Link>
+          ) : (
+            <Link href="/sign-in">
+              <img src="/icon/user.svg" alt="" />
+            </Link>
+          )}
         </div>
       </div>
     </header>

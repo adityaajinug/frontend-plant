@@ -27,6 +27,10 @@ const config: Config = {
       },
       padding: {
         "25": "6.25rem",
+        ten: "0.625rem",
+      },
+      gap: {
+        fourtheen: "0.875rem",
       },
       colors: {
         "primary-0": "#FFFFFF",
@@ -43,6 +47,7 @@ const config: Config = {
         "divider-300": "#E9E9E9",
         "divider-400": "#E4E4E4",
         "divider-500": "#979797",
+        "accent-base-400": "#C61414",
       },
       width: {
         "65": "18.375rem",
