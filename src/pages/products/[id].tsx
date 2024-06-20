@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { GetServerSideProps } from "next";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { ProductCard } from "@/components/atoms/ProductCard/ProductCard";
+import { productDatas } from "@/dummy/Products/productsDummy";
 interface Size {
   size: string;
   uuid: string;
@@ -22,17 +24,11 @@ interface ProductDetail {
 interface ProductsDetailProps {
   detail: ProductDetail;
 }
-// function formatRupiah(angka: any) {
-//   return angka.toLocaleString("id-ID", { style: "currency", currency: "IDR" });
-// }
 const ProductsDetail: React.FC<ProductsDetailProps> = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  console.log(router.query);
   const [detail, setDetail] = useState<ProductDetail | null>(null);
-
-  console.log(detail);
 
   useEffect(() => {
     const fetchProductDetail = async () => {
@@ -42,7 +38,6 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
           `${process.env.NEXT_PUBLIC_ENV_LOCAL_VARIABLE}/product/detail?id=${id}`
         );
         if (response.status == 200) {
-          console.log(response.data.data);
           setDetail(response.data.data);
         }
       } catch (error) {
@@ -160,29 +155,45 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
               </div>
             </div>
           </div>
+          <div className="mt-[66px]">
+            <div className="flex gap-6 border-b-2 border-solid border-[#CCCBCB] w-full">
+              <button className="font-semibold text-sm border-b-2 border-solid border-primary-800 py-ten">
+                Description
+              </button>
+              <button className="font-semibold text-sm py-ten">Review</button>
+            </div>
+            <div className="mt-7">
+              <p className="text-sm">{detail?.description}</p>
+            </div>
+            <div className="flex justify-between mt-[42px] gap-6 border-b-2 border-solid border-[#CCCBCB] w-full">
+              <h1 className="font-semibold text-sm py-ten">Related Products</h1>
+              <div className="flex gap-[10px] items-center">
+                <h4 className="text-primary-700 font-bold text-sm">
+                  View More
+                </h4>
+                <div className="max-w-6">
+                  <img
+                    src="/icon/arrow-right.svg"
+                    alt=""
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="mt-[34px]">
+              <div className="grid grid-cols-12 gap-5">
+                {productDatas.map((product, index) => (
+                  <div className="col-span-3" key={index}>
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </Layout>
     </>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { id } = context.params!;
-//   // Fetch the product detail from an API or database
-//   // Here we use a mock product detail for demonstration
-//   const productDetail: ProductDetail = {
-//     id: Number(id),
-//     name: `Sansiviera`,
-//     price: 15000,
-//     price_discount: 5000,
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-//   };
-
-//   return {
-//     props: {
-//       detail: productDetail,
-//     },
-//   };
-// };
 
 export default ProductsDetail;

@@ -1,5 +1,6 @@
 import { ProductCard } from "@/components/atoms/ProductCard/ProductCard";
 import { SectionTitle } from "@/components/atoms/SectionTitle/SectionTitle";
+import { productDatas } from "@/dummy/Products/productsDummy";
 import { Products } from "@/types/Products/products";
 import axios from "axios";
 import React, { useEffect, useState } from "react";

@@ -13,4 +13,16 @@ export const productDatas: Products[] = [
     price: 25000,
     price_discount: 10000,
   },
+  {
+    id: "3",
+    title: "Cactus",
+    price: 25000,
+    price_discount: 10000,
+  },
+  {
+    id: "4",
+    title: "Cactus",
+    price: 25000,
+    price_discount: 10000,
+  },
 ];
