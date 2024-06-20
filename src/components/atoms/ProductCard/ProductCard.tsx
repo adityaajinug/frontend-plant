@@ -18,8 +18,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <div className="rounded-10 overflow-hidden min-w-65 max-w-65">
         <div className="max-w-65 bg-primary-50">
           <img
-            // src="/images/img-card.png"
-            src={product.image}
+            src="/images/img-card.png"
+            // src={product.image}
             alt="card"
             className="w-full h-full object-cover"
           />
