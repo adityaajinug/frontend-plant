@@ -41,12 +41,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
               </p>
             </div>
           </div>
-          <button
-            type="button"
+          <Link
+            href={`/products/${product.id}`}
             className="bg-primary-800 rounded-lg p-2 w-fit hover:bg-primary-700"
           >
             <img src="/icon/bags-cart.svg" alt="icon cart" />
-          </button>
+          </Link>
         </div>
       </div>
     </>
