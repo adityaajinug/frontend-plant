@@ -29,6 +29,7 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
   const { id } = router.query;
 
   const [detail, setDetail] = useState<ProductDetail | null>(null);
+  const [selectedSize, setSelectedSize] = useState(null);
 
   useEffect(() => {
     const fetchProductDetail = async () => {
@@ -55,6 +56,10 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
       currency: "IDR",
       minimumFractionDigits: 0,
     }).format(number);
+  };
+  const handleSizeSelected = (uuid: any) => {
+    console.log(uuid);
+    setSelectedSize(uuid);
   };
   return (
     <>
@@ -110,7 +115,21 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
                 <div className="flex gap-[14px] flex-col">
                   <h3 className="font-bold text-base text-black">Size :</h3>
                   <div className="flex gap-[10px]">
-                    <button
+                    {detail?.size?.map((size, index) => (
+                      <button
+                        onClick={() => handleSizeSelected(size.uuid)}
+                        key={index}
+                        type="button"
+                        className={`border border-solid border-primary-400 text-primary-400 px-[10px] py-1 rounded-lg max-w-[80px] ${
+                          selectedSize === size.uuid
+                            ? "bg-primary-50"
+                            : "bg-primary-0"
+                        }`}
+                      >
+                        {size.size}
+                      </button>
+                    ))}
+                    {/* <button
                       type="button"
                       className="uppercase bg-primary-50 border border-solid text-primary-400 border-primary-400 px-[10px] py-1 rounded-lg max-w-[80px]"
                     >
@@ -133,7 +152,7 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
                       className="uppercase bg-primary-0 border border-solid border-divider-500 text-divider-500 px-[10px] py-1 rounded-lg max-w-[80px]"
                     >
                       XL
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
