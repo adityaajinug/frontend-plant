@@ -6,7 +6,7 @@ import React from "react";
 export const FooterOrganisms = () => {
   return (
     <>
-      <footer className="container mx-auto px-25 bg-primary-800 py-[42px] mt-[162px]">
+      <footer className="container mx-auto px-25 bg-primary-800 py-[42px] ">
         <div className="flex gap-8 flex-col">
           <div className="flex justify-between items-center">
             <SecondaryLogo />

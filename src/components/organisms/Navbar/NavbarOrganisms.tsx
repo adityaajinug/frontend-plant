@@ -3,6 +3,13 @@ import { useAuth } from "@/utils/AuthContext";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Button,
+} from "@nextui-org/react";
 
 export const Navbar = () => {
   const { isAuthenticated, user } = useAuth();
@@ -60,10 +67,31 @@ export const Navbar = () => {
             <img src="/icon/shopping-cart.svg" alt="" />
           </Link>
           {isAuthenticated ? (
-            <Link href="/profile" className="flex items-center gap-[6px]">
-              <img src="/icon/user.svg" alt="" />
-              <span className="text-black font-normal text-sm">{user}</span>
-            </Link>
+            <Dropdown>
+              <DropdownTrigger>
+                {/* <Button variant="bordered">Open Menu</Button> */}
+                <button type="button" className="flex items-center gap-[6px]">
+                  <img src="/icon/user.svg" alt="" />
+                  <span className="text-black font-normal text-sm">{user}</span>
+                </button>
+              </DropdownTrigger>
+              <DropdownMenu aria-label="Static Actions">
+                <DropdownItem key="profile">
+                  <Link href="/profile" className="border border-solid w-full">
+                    Profile
+                  </Link>
+                </DropdownItem>
+                <DropdownItem
+                  key="logout"
+                  className="text-danger"
+                  color="danger"
+                >
+                  <Link href="/profile" className="border border-solid w-full">
+                    Logout
+                  </Link>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           ) : (
             <Link href="/sign-in">
               <img src="/icon/user.svg" alt="" />

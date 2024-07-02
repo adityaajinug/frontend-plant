@@ -1,10 +1,12 @@
 import type { Config } from "tailwindcss";
+const { nextui } = require("@nextui-org/react");
 
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
@@ -28,9 +30,12 @@ const config: Config = {
       padding: {
         "25": "6.25rem",
         ten: "0.625rem",
+        "27": "1.688rem",
       },
       gap: {
         fourtheen: "0.875rem",
+        "42": "2.625rem",
+        six: "0.375rem",
       },
       colors: {
         "primary-0": "#FFFFFF",
@@ -52,18 +57,22 @@ const config: Config = {
       width: {
         "65": "18.375rem",
         "83": "5.188rem",
+        "192": "12rem",
       },
       borderRadius: {
         "10": "0.625rem",
       },
       margin: {
         "65": "4.063rem",
+        "162": "10.125rem",
       },
     },
   },
   daisyui: {
     themes: ["light"],
   },
-  plugins: [require("daisyui")],
+  // plugins: [require("daisyui")],
+  darkMode: "class",
+  plugins: [nextui(), require("daisyui")],
 };
 export default config;

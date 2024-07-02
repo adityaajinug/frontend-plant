@@ -24,7 +24,7 @@ const valueDatas: Values[] = [
 export const Value: React.FC = () => {
   return (
     <>
-      <section className="mt-[106px] container mx-auto px-25">
+      <section className="mt-[106px] container mx-auto px-25 mb-[162px]">
         <div className="flex justify-between items-center  px-25 py-[30px] bg-primary-50 rounded-lg">
           {valueDatas.map((value, index) => (
             <div className="flex gap-[15px]" key={index}>

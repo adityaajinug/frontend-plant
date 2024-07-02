@@ -4,6 +4,7 @@ import { AuthProvider } from "@/utils/AuthContext";
 import type { AppProps } from "next/app";
 import { CookiesProvider } from "react-cookie";
 import NextNProgress from "nextjs-progressbar";
+import { NextUIProvider } from "@nextui-org/react";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -15,7 +16,9 @@ export default function App({ Component, pageProps }: AppProps) {
             stopDelayMs={200}
             height={5}
           />
-          <Component {...pageProps} />
+          <NextUIProvider>
+            <Component {...pageProps} />
+          </NextUIProvider>
         </AuthProvider>
       </CookiesProvider>
     </>

@@ -59,7 +59,7 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
   return (
     <>
       <Layout title={detail?.title as string}>
-        <div className="container mx-auto px-25 mt-[65px]">
+        <div className="container mx-auto px-25 mt-[65px] mb-[162px]">
           <div className="flex flex-row gap-[82px] items-center">
             <div className="flex gap-8">
               <div className="flex flex-col gap-[18px]">

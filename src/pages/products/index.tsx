@@ -113,7 +113,7 @@ const Products = () => {
   return (
     <>
       <Layout title="Products">
-        <div className="container mx-auto px-25 mt-[68px]">
+        <div className="container mx-auto px-25 mt-[68px] mb-[162px]">
           <div className="grid grid-cols-12 gap-[89px]">
             <div className="col-span-3">
               {isFilterApplied && (

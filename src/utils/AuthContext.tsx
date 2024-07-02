@@ -31,7 +31,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     const storedToken = cookies.get("token");
-    const storedUser = cookies.get("fullname");
+    const storedUser = cookies.get("email");
     if (storedToken && storedUser) {
       setToken(storedToken);
       setUser(storedUser);
