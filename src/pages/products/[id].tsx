@@ -6,9 +6,10 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { ProductCard } from "@/components/atoms/ProductCard/ProductCard";
 import { productDatas } from "@/dummy/Products/productsDummy";
+import Cookies from "universal-cookie";
 interface Size {
   size: string;
-  uuid: string;
+  size_id: string;
 }
 
 interface ProductDetail {
@@ -24,12 +25,19 @@ interface ProductDetail {
 interface ProductsDetailProps {
   detail: ProductDetail;
 }
+interface CartData {
+  productId: string;
+  selectedSize: string;
+  qty: number;
+}
 const ProductsDetail: React.FC<ProductsDetailProps> = () => {
   const router = useRouter();
   const { id } = router.query;
 
   const [detail, setDetail] = useState<ProductDetail | null>(null);
   const [selectedSize, setSelectedSize] = useState(null);
+  const [productId, setProductId] = useState(null);
+  const cookies = new Cookies();
 
   useEffect(() => {
     const fetchProductDetail = async () => {
@@ -40,6 +48,7 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
         );
         if (response.status == 200) {
           setDetail(response.data.data);
+          console.log("response", response.data.data);
         }
       } catch (error) {
         console.error("Error fetching product detail:", error);
@@ -58,8 +67,49 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
     }).format(number);
   };
   const handleSizeSelected = (uuid: any) => {
-    console.log(uuid);
     setSelectedSize(uuid);
+  };
+  const handleBuyNow = async (id: any) => {
+    if (selectedSize) {
+      setProductId(id);
+      const cartData: CartData = {
+        productId: id,
+        selectedSize: selectedSize,
+        qty: 1,
+      };
+      // console.log(cookies.get("token"));
+
+      const params = new URLSearchParams();
+      params.append("product_id", cartData.productId);
+      params.append("size_id", cartData.selectedSize);
+      params.append("qty", cartData.qty.toString());
+
+      // console.log("param", params);
+
+      try {
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_ENV_LOCAL_VARIABLE}/cart/addtocart`,
+          params,
+          {
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              Authorization: cookies.get("token"),
+            },
+          }
+        );
+        if (response.status == 200) {
+          console.log("Product added to cart:", response.data);
+          router.push("/cart");
+        }
+      } catch (error) {
+        console.error(
+          "There was an error adding the product to the cart:",
+          error
+        );
+      }
+    } else {
+      alert("Please choose the Size");
+    }
   };
   return (
     <>
@@ -117,47 +167,26 @@ const ProductsDetail: React.FC<ProductsDetailProps> = () => {
                   <div className="flex gap-[10px]">
                     {detail?.size?.map((size, index) => (
                       <button
-                        onClick={() => handleSizeSelected(size.uuid)}
+                        onClick={() => handleSizeSelected(size.size_id)}
                         key={index}
                         type="button"
-                        className={`border border-solid border-primary-400 text-primary-400 px-[10px] py-1 rounded-lg max-w-[80px] ${
-                          selectedSize === size.uuid
-                            ? "bg-primary-50"
-                            : "bg-primary-0"
+                        className={`border border-solid  px-[10px] py-1 rounded-lg max-w-[80px] ${
+                          selectedSize === size.size_id
+                            ? "bg-primary-50 border-primary-400 text-primary-400"
+                            : "bg-primary-0 border border-solid border-divider-500 text-divider-500"
                         }`}
                       >
-                        {size.size}
+                        {size.size.charAt(0)}
                       </button>
                     ))}
-                    {/* <button
-                      type="button"
-                      className="uppercase bg-primary-50 border border-solid text-primary-400 border-primary-400 px-[10px] py-1 rounded-lg max-w-[80px]"
-                    >
-                      S
-                    </button>
-                    <button
-                      type="button"
-                      className="uppercase bg-primary-0 border border-solid border-divider-500 text-divider-500 px-[10px] py-1 rounded-lg max-w-[80px]"
-                    >
-                      M
-                    </button>
-                    <button
-                      type="button"
-                      className="uppercase bg-primary-0 border border-solid border-divider-500 text-divider-500 px-[10px] py-1 rounded-lg max-w-[80px]"
-                    >
-                      L
-                    </button>
-                    <button
-                      type="button"
-                      className="uppercase bg-primary-0 border border-solid border-divider-500 text-divider-500 px-[10px] py-1 rounded-lg max-w-[80px]"
-                    >
-                      XL
-                    </button> */}
                   </div>
                 </div>
               </div>
               <div className="flex gap-5">
                 <button
+                  onClick={() => {
+                    handleBuyNow(detail?.id);
+                  }}
                   type="button"
                   className="w-fit bg-primary-800 py-3 px-[18px] rounded-lg text-primary-0 flex gap-[10px] hover:bg-primary-700 active:scale-90 transition-all duration-300 items-center"
                 >

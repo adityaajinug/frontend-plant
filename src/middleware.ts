@@ -5,10 +5,10 @@ import Cookies from "universal-cookie";
 
 export function middleware(request: NextRequest) {
   const cookies = new Cookies();
-  const token = cookies.get("token"); // Ambil token dari cookie
+  const token = request.cookies.get("token"); // Ambil token dari cookie
 
   // Cek apakah path yang diminta adalah salah satu path yang dilindungi
-  const protectedPaths = ["/profile"];
+  const protectedPaths = ["/profile", "/cart"];
   const isProtectedPath = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path)
   );
@@ -24,5 +24,5 @@ export function middleware(request: NextRequest) {
 
 // Tentukan path mana saja yang akan menggunakan middleware ini
 export const config = {
-  matcher: ["/profile/:path*", "/dashboard", "/settings"],
+  matcher: ["/profile/:path*", "/dashboard", "/settings", "/cart/:path*"],
 };

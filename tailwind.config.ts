@@ -31,6 +31,7 @@ const config: Config = {
         "25": "6.25rem",
         ten: "0.625rem",
         "27": "1.688rem",
+        "18": "1.125rem",
       },
       gap: {
         fourtheen: "0.875rem",
@@ -57,6 +58,9 @@ const config: Config = {
       width: {
         "65": "18.375rem",
         "83": "5.188rem",
+        "192": "12rem",
+      },
+      height: {
         "192": "12rem",
       },
       borderRadius: {

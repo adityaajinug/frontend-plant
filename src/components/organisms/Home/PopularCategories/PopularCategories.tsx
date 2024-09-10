@@ -27,6 +27,13 @@ export const PopularCategories = () => {
   useEffect(() => {
     fetchPopularCategories();
   }, []);
+  const truncateText = (text: any, maxLength: any) => {
+    if (text.length <= maxLength) {
+      return text;
+    }
+    return text.substring(0, maxLength) + "...";
+  };
+
   return (
     <>
       <div className="container mx-auto px-25 mt-[106px]">
@@ -47,7 +54,9 @@ export const PopularCategories = () => {
                   <h4 className="text-primary-800 font-semibold text-base">
                     {category.category_name}
                   </h4>
-                  <p className="text-base text-black">{category.description}</p>
+                  <p className="text-base text-black">
+                    {truncateText(category.description, 100)}
+                  </p>
                 </div>
               </div>
             </div>

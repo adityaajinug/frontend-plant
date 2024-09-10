@@ -53,6 +53,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     setToken(null);
     cookies.remove("token", { path: "/" }); // Hapus cookie token
     cookies.remove("email", { path: "/" }); // Hapus cookie email
+    localStorage.removeItem("selectedProducts");
   };
 
   const authContextValue: AuthContextType = {

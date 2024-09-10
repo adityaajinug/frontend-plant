@@ -17,7 +17,7 @@ export const ModalAlertAtoms: React.FC<ModalAlertAtomsProps> = ({
   if (!isVisible) return null;
   return (
     <>
-      <div className="fixed inset-0 bg-black bg-opacity-25 flex justify-center items-center backdrop-blur-sm">
+      <div className="fixed inset-0 bg-black bg-opacity-25 z-[100000] flex justify-center items-center backdrop-blur-sm">
         <div className="w-[300px] h-fit bg-white flex flex-col gap-[40px] items-center px-5 py-6 rounded-[18px]">
           <div>
             <img
